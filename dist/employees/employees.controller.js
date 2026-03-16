@@ -16,6 +16,7 @@ exports.EmployeesController = void 0;
 const common_1 = require("@nestjs/common");
 const employees_service_1 = require("./employees.service");
 const employee_model_1 = require("./employee.model");
+const api_key_guard_1 = require("../guards/api-key.guard");
 let EmployeesController = class EmployeesController {
     employeesService;
     constructor(employeesService) {
@@ -75,6 +76,7 @@ __decorate([
     __metadata("design:returntype", void 0)
 ], EmployeesController.prototype, "remove", null);
 exports.EmployeesController = EmployeesController = __decorate([
+    (0, common_1.UseGuards)(api_key_guard_1.ApiKeyGuard),
     (0, common_1.Controller)('employees'),
     __metadata("design:paramtypes", [employees_service_1.EmployeesService])
 ], EmployeesController);
